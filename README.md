@@ -17,143 +17,35 @@
 - ⚡ Fun fact: Outside work, I’m usually balancing running, Pilates or tennis with cooking something new — and planning my next travel adventure.
 
 
-# Analysis of Authorised Push Payment (APP) Fraud in the UK
+# APP Fraud Analysis: UK Authorised Push Payment Trends
 
-## Project Overview
-This project applies an end-to-end data science workflow to analyse trends and risk patterns in Authorised Push Payment (APP) fraud in the United Kingdom. Using publicly available datasets from Action Fraud, UK Finance and the Financial Conduct Authority (FCA), the analysis explores how fraud volumes, financial losses and scam typologies have evolved over time.
+## Overview
+This repository presents an end‑to‑end data science project analysing **Authorised Push Payment (APP) fraud in the UK**. The project uses publicly available data from Action Fraud, UK Finance and the Financial Conduct Authority (FCA) to explore how fraud volumes, financial losses and scam typologies have evolved over time.
 
-The primary aim is to identify which APP fraud typologies pose the greatest financial risk and to demonstrate how analytical insights can support more effective fraud prevention strategies within the financial services sector.
+The analysis focuses on identifying **where financial harm is most concentrated**, rather than relying solely on fraud volumes. It demonstrates how data science techniques can generate strategic insight to support fraud prevention, regulatory compliance and risk‑based decision‑making within financial services.
 
 ---
 
-## Executive Summary
-Authorised Push Payment fraud represents a growing and complex challenge for UK financial institutions, with rising losses and increasing regulatory scrutiny. This project addresses the challenge of understanding how APP fraud risk is distributed across scam typologies and how this distribution has changed over time.
+## Business Context
+APP fraud is a growing concern for UK financial institutions, regulators and consumers. Rising losses, increasingly sophisticated scam types and strengthened reimbursement obligations mean organisations must prioritise fraud prevention investment more effectively.
 
-Multiple years of aggregated APP fraud data are consolidated and engineered to produce severity, growth and distribution metrics. Exploratory analysis reveals that financial losses are increasingly concentrated within fewer, higher-value scam types, particularly investment and impersonation-related frauds. This demonstrates that volume-based prioritisation alone is insufficient for managing APP fraud risk.
-
-The findings provide strategic insight into how banks and regulators can better target interventions, prioritise investment, and support compliance with reimbursement obligations.
+This project addresses the challenge of understanding which scam typologies create the greatest financial risk and how those risks are changing over time. The emphasis is on producing **decision‑relevant insights**, rather than individual‑level prediction, using aggregated external data.
 
 ---
 
 ## Data Sources
-All data used in this project is publicly available and fully anonymised.
+All datasets used are publicly available and fully anonymised.
 
-- **Action Fraud** – National UK fraud and cybercrime statistics  
-- **UK Finance** – Annual *Fraud The Facts* reports  
-- **Financial Conduct Authority (FCA)** – Regulatory guidance and APP reimbursement reporting  
+- **Action Fraud** – UK fraud and cybercrime reporting statistics  
+- **UK Finance** – *Fraud The Facts* annual publications  
+- **Financial Conduct Authority (FCA)** – APP reimbursement guidance and reporting  
 
-Data is aggregated at an annual level and includes:
+The data includes aggregated annual metrics such as:
 - APP fraud case volumes  
-- Total financial losses  
+- Total losses (£)  
 - Scam typology breakdowns  
-- High-level victim segmentation  
+- High‑level victim segmentation  
 
 ---
 
-## Data Infrastructure & Tools
-The project uses a standard, industry-aligned data science toolchain:
-
-- **Python** – Core analysis and data processing  
-- **pandas / numpy** – Data manipulation and feature engineering  
-- **matplotlib / seaborn** – Exploratory visualisation  
-- **scikit-learn** – Unsupervised learning techniques  
-- **Jupyter Notebook** – Reproducible and documented analysis workflow  
-- **Power BI / Tableau** – Interactive dashboards (conceptual design)  
-- **GitHub** – Version control and portfolio presentation  
-
-This tooling supports transparency, reproducibility and effective communication with both technical and non-technical stakeholders.
-
----
-
-## Data Engineering
-An extract-transform-load (ETL) process is applied to combine multiple years of APP fraud statistics into a single analytical dataset.
-
-Key steps include:
-- Harmonising scam typology definitions across reporting years  
-- Flagging structural changes where categories cannot be perfectly aligned (e.g. crypto scams)  
-- Engineering analytical features such as:
-  - Average loss per case  
-  - Proportion of total losses by typology  
-  - Year-on-year growth rates  
-  - High-severity typology indicators  
-
-Data quality checks are performed throughout, including validation against published totals, missing value analysis, and anomaly detection. All transformations are documented within the analysis notebooks.
-
----
-
-## Analytical Approach
-The analysis begins with descriptive statistics to establish baseline trends in APP fraud volumes and losses. The central hypothesis is that APP fraud risk is increasingly driven by loss severity rather than case volume alone.
-
-Trend analysis is used to identify scam types with sustained growth or volatility. Where appropriate, unsupervised learning methods such as clustering are explored to group typologies based on severity, growth rate and loss concentration. Model choice is driven by interpretability and suitability for aggregated data.
-
-The analysis explicitly avoids individual-level prediction and instead focuses on strategic, decision-relevant insights.
-
----
-
-## Data Visualisation & Dashboards
-Visual outputs are designed to communicate insights clearly to non-technical audiences, such as fraud leadership and policy stakeholders.
-
-Planned visuals include:
-- Time-series charts of total APP fraud losses and case volumes  
-- Stacked charts illustrating shifts in scam typology composition  
-- Comparative charts of average loss per case by typology  
-- Optional geographic views where regional data permits  
-
-Dashboard design follows established visualisation principles, prioritising clarity, consistency and narrative flow.
-
----
-
-## Ethical, Legal & Governance Considerations
-The project uses fully anonymised, aggregated data, eliminating risks associated with personal data processing. However, key limitations are acknowledged:
-
-- Potential under-reporting of fraud incidents  
-- Risk of ecological fallacy when interpreting aggregated trends  
-- Inability to infer individual behaviour or causality  
-
-Regulatory considerations are addressed through alignment with FCA guidance and APP reimbursement frameworks. Ethical implications are documented alongside analytical findings.
-
----
-
-## Recommendations
-Based on the analytical approach and anticipated findings, the project proposes the following strategic recommendations:
-
-1. **Shift prioritisation from volume to severity**  
-   Fraud prevention strategies should focus more heavily on scam types with high average losses rather than volume alone.
-
-2. **Typology-specific customer interventions**  
-   Warning messages and friction should be tailored to high-severity scams such as investment and impersonation fraud.
-
-3. **Early-trend monitoring**  
-   Growth-rate indicators should be used as early warning signals to inform proactive controls.
-
-4. **Integration with internal data**  
-   Future iterations could combine public data with bank-level transaction data to enable more granular risk modelling and evaluation.
-
----
-
-## Future Work
-Potential extensions of this project include:
-- Automated data refresh pipelines  
-- Integration with transaction-level datasets  
-- Supervised modelling for risk scoring  
-- Impact evaluation against reimbursement cost metrics  
-
----
-
-## References
-Action Fraud (2023). *Fraud and cyber crime statistics*.  
-UK Finance (2024). *Fraud The Facts*.  
-Financial Conduct Authority (2023). *APP reimbursement guidance*.  
-Provost, F. & Fawcett, T. (2013). *Data Science for Business*.  
-Few, S. (2012). *Show Me the Numbers*.  
-
-
-
-
-<!--
-**ambevans/ambevans** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-
--->
+## Project Structure
