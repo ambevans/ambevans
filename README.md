@@ -17,35 +17,13 @@
 - ⚡ Fun fact: Outside work, I’m usually balancing running, Pilates or tennis with cooking something new — and planning my next travel adventure.
 
 
-# APP Fraud Analysis: UK Authorised Push Payment Trends
-
-## Overview
-This repository presents an end‑to‑end data science project analysing **Authorised Push Payment (APP) fraud in the UK**. The project uses publicly available data from Action Fraud, UK Finance and the Financial Conduct Authority (FCA) to explore how fraud volumes, financial losses and scam typologies have evolved over time.
-
-The analysis focuses on identifying **where financial harm is most concentrated**, rather than relying solely on fraud volumes. It demonstrates how data science techniques can generate strategic insight to support fraud prevention, regulatory compliance and risk‑based decision‑making within financial services.
-
----
-
-## Business Context
-APP fraud is a growing concern for UK financial institutions, regulators and consumers. Rising losses, increasingly sophisticated scam types and strengthened reimbursement obligations mean organisations must prioritise fraud prevention investment more effectively.
-
-This project addresses the challenge of understanding which scam typologies create the greatest financial risk and how those risks are changing over time. The emphasis is on producing **decision‑relevant insights**, rather than individual‑level prediction, using aggregated external data.
-
----
-
-## Data Sources
-All datasets used are publicly available and fully anonymised.
-
-- **Action Fraud** – UK fraud and cybercrime reporting statistics  
-- **UK Finance** – *Fraud The Facts* annual publications  
-- **Financial Conduct Authority (FCA)** – APP reimbursement guidance and reporting  
-
-The data includes aggregated annual metrics such as:
-- APP fraud case volumes  
-- Total losses (£)  
-- Scam typology breakdowns  
-- High‑level victim segmentation  
-
----
-
-## Project Structure
+/app-fraud-analysis
+│
+├── README.md
+├── data/
+│   └── raw_and_processed_data.csv
+├── notebooks/
+│   └── app_fraud_analysis.ipynb
+├── visuals/
+│   └── dashboard_screenshots.png
+└── references/
