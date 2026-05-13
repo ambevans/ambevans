@@ -62,11 +62,13 @@ Data quality checks are embedded throughout the process, including validation of
 Data visualisation is the primary mechanism for translating analytical findings into business relevant insights. Trend charts illustrate changes in total APP fraud losses and case volumes over time, highlighting divergence between incident frequency and financial impact. This allows stakeholders to observe that rising harm is driven by severity rather than volume alone.
 
 <img width="900" height="442" alt="image" src="https://github.com/user-attachments/assets/bfcf9ba1-bf3f-4ddf-af72-9842e0d1deaf" />
+
 **Figure 1: Total APP Fraud Volumes and Losses Over Time.** Figure 1 shows trends in total reported APP fraud case volumes alongside total financial losses over time. While case volumes increase gradually, financial losses grow at a faster rate, highlighting a divergence between frequency and severity.
 
 Stacked bar and area charts show how the composition of fraud losses has shifted across scam typologies, enabling rapid identification of high impact categories. Comparative visuals, such as average loss per case by typology, reinforce prioritisation discussions by focusing attention on financial harm rather than reported incidents.
 
 <img width="900" height="436" alt="image" src="https://github.com/user-attachments/assets/4a32949b-1328-4f44-ba60-1f984e5d1f22" />
+
 **Figure 2: Average Loss per Case by Scam Typology.** Figure 2 compares the average financial loss per case across APP fraud scam typologies. The visual demonstrates that certain scam types, particularly investment and impersonation based scams, generate significantly higher losses per incident despite lower overall volumes.
 
 Visuals are designed not as descriptive outputs but as decision support artefacts, enabling stakeholders to distinguish high volume scams from high impact scams at a glance. Designs prioritise accessibility for non-technical audiences, using consistent colour, clear annotation and minimal cognitive load to support interpretation. Together, the visual and written elements form a coherent analytical narrative that links trends, drivers and implications for decision‑making.
@@ -79,6 +81,7 @@ The analytical approach begins with descriptive and exploratory analysis to esta
 Comparative analysis of average loss per case and typology level loss shares supports this hypothesis, showing that certain scams generate disproportionate financial harm. Trend analysis is used to identify scam categories exhibiting sustained growth or volatility, enabling early warning insight. Where appropriate, unsupervised techniques such as clustering are explored to group scam types based on shared characteristics of severity and growth.
 
 <img width="922" height="449" alt="image" src="https://github.com/user-attachments/assets/2487f603-b59f-44a5-98f2-808df91fece7" />
+
 **Figure 3: Scam Typology Loss Trends Over Time.** Figure 3 presents loss trends over time for major APP fraud scam typologies. The chart highlights sustained growth and volatility within high severity scam types, supporting the use of trend based indicators as early warning signals.
 
 Exploratory and comparative approaches are particularly suitable for fraud analysis, as losses are typically skewed and dominated by extreme values. Effective fraud analytics therefore prioritise interpretability and robustness over predictive accuracy, particularly where outputs inform strategic rather than operational decisions (Bolton and Hand, 2002). While predictive modelling could be applied where individual level data is available, an exploratory analytical approach is more appropriate here given the aggregated structure of the data and the strategic nature of the research questions.
