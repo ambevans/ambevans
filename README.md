@@ -19,87 +19,90 @@
 
 
 
+# Analysis of Authorised Push Payment (APP) Fraud in the UK
 
-# PART 1 — DATA SCIENCE PROJECT
-## Topic: Analysis of Authorised Push Payment (APP) Fraud in the UK
-
----
-
-## TL;DR
-This project applies a full data science workflow to publicly available UK data on Authorised Push Payment (APP) fraud. By consolidating multiple years of aggregated fraud statistics, engineering severity‑based features, and conducting exploratory analysis, the project demonstrates that financial losses are increasingly concentrated within fewer, higher‑value scam types. The findings highlight the limitations of volume‑based prioritisation and illustrate how evidence‑led insights can support more targeted fraud‑prevention strategies, regulatory alignment, and strategic decision‑making within financial services.
+## PART 1 — DATA SCIENCE PROJECT
 
 ---
 
-## Executive Summary
-This project investigates the evolution and impact of Authorised Push Payment (APP) fraud in the UK using publicly available datasets from Action Fraud, UK Finance and the Financial Conduct Authority (FCA). APP fraud presents a significant and growing challenge to the UK financial system, with increasing volumes, rising losses, and escalating regulatory expectations following the introduction of mandatory reimbursement requirements. The central data science challenge addressed in this project is to understand how APP fraud typologies are changing over time, which scam categories pose the greatest financial risk, and how evidence‑led insights can support more targeted fraud‑prevention strategies within financial institutions.
+## Executive Summary, Documentation, Project Report & Impact Evaluation
 
-The project applies an end‑to‑end data science workflow, incorporating data sourcing, data engineering, exploratory and analytical techniques, and data visualisation. Multiple years of aggregated APP fraud statistics are consolidated into a single analytical dataset, with engineered features such as average loss per case, typology‑level loss concentration and year‑on‑year growth indicators. Exploratory analysis is used to quantify how losses are shifting towards fewer but higher‑value cases, particularly within investment and impersonation‑based scams.
+This project investigates the evolution and impact of Authorised Push Payment (APP) fraud in the UK using publicly available datasets from Action Fraud, UK Finance and the Financial Conduct Authority (FCA). APP fraud represents a rapidly evolving and systemically significant form of financial crime that has prompted a major regulatory response, including the introduction of mandatory reimbursement requirements. These developments reflect growing recognition that APP fraud poses material risks to consumer protection and financial stability rather than being an isolated operational issue (Braithwaite, 2024).
 
-The findings demonstrate that APP fraud risk is not evenly distributed across scam types. Certain typologies generate disproportionately high losses despite relatively lower case volumes, highlighting the limitations of volume‑based prioritisation approaches. These insights have direct business relevance for banks, enabling more effective allocation of fraud‑prevention investment, refinement of customer warning journeys, and improved compliance with regulatory expectations.
+The central business challenge addressed is how financial institutions can prioritise fraud‑prevention effort more effectively in a context where reimbursement obligations increase the cost of inaction. The project tests the hypothesis that APP fraud harm is increasingly driven by loss severity within specific scam typologies rather than by overall growth in case volumes. From a data science perspective, the objective is to determine how aggregated external data can be transformed into insights that support smarter prioritisation and earlier intervention.
 
-From an impact perspective, the project illustrates how aggregated external data can be transformed into decision‑useful intelligence. While the dataset does not allow individual‑level prediction, the analysis supports strategic prioritisation, cost‑benefit decision‑making and stakeholder engagement across fraud, product and compliance teams. Future iterations outline how similar methods could be integrated with internal transaction‑level data to deliver greater operational impact.
+An end‑to‑end data science workflow is applied, focused on exploratory, comparative and descriptive analysis rather than individual‑level prediction. This aligns with established data science principles, which emphasise that analytical value is realised when insights directly support strategic decision‑making (Provost and Fawcett, 2013). Multiple years of aggregated APP fraud statistics are consolidated into a single analysis‑ready dataset, with engineered features including average loss per case, typology‑level loss concentration and year‑on‑year growth indicators.
+
+The analysis shows that APP fraud risk is not evenly distributed: a small number of scam types generate disproportionately high financial harm despite relatively lower volumes. This exposes the limitations of volume‑based prioritisation commonly used in operational reporting. From a business perspective, these insights support severity‑based prioritisation that can reduce financial losses, improve reimbursement outcomes and inform earlier regulatory intervention. The project concludes by outlining how similar methods could be extended using internal transaction‑level data to measure and increase operational impact.
 
 ---
 
 ## Data Infrastructure & Tools
-The project uses a modern, lightweight data science toolchain designed to support transparency, reproducibility and effective communication. Python is the core programming language, selected for its extensive data science ecosystem and strong support for data manipulation, statistical analysis and visualisation. Key libraries include **pandas**, **numpy**, **matplotlib**, **seaborn** and **scikit‑learn**.
 
-Jupyter Notebook is used as the primary analytical environment. This enables a clear, documented workflow in which code, outputs and explanatory commentary are integrated, supporting auditability and alignment with best practice in applied data science. All assumptions, transformations and analytical decisions are recorded alongside outputs, which is particularly important in a regulatory‑adjacent domain such as fraud analytics.
+The project uses a lightweight data science toolchain designed to support transparency, reproducibility and effective communication. Python is selected as the core programming language due to its strong support for data manipulation, aggregation and exploratory analysis. Core libraries include `pandas` and `numpy` for structured data processing and feature engineering, alongside `matplotlib` and `seaborn` for exploring trends, distributions and typology‑level comparisons. These tools are well‑suited to working with aggregated public data and enable rapid iteration during exploratory analysis.
 
-For data communication, the project leverages Power BI (or Tableau) to design interactive dashboards. These tools are well‑suited to executive and stakeholder audiences, allowing users to explore trends over time, compare scam typologies, and understand changes in loss severity through intuitive visuals. Although dashboards are conceptual in early stages of the project, their structure has been deliberately designed to reflect real‑world fraud monitoring use cases within financial services.
+Jupyter Notebook is used as the primary analytical environment, allowing code, outputs and explanatory commentary to be documented side by side. This supports auditability and reproducibility by ensuring that assumptions, transformations and analytical decisions are visible and reviewable. Such transparency is particularly important in regulatory‑adjacent domains such as financial crime analytics, where analytical reasoning must be explainable and defensible.
 
-GitHub is used for version control and project management, hosting datasets, notebooks, documentation and visual artefacts. This supports reproducibility, collaborative working, and alignment with industry practice for data science portfolio development.
+For insight communication, the project leverages business intelligence tools such as Power BI (or Tableau) to design interactive dashboards. These tools are selected for their effectiveness in conveying analytical insights to non‑technical stakeholders, enabling exploration of trends over time, comparison of scam typologies and assessment of loss severity. Dashboard design follows established visual communication principles that prioritise clarity and decision support (Few, 2012).
+
+The supporting infrastructure is intentionally lightweight and file‑based, reflecting the constraints of working with externally published datasets rather than live internal transaction feeds. In a production environment, similar analyses could be supported by automated pipelines and governed analytics platforms; however, such infrastructure is neither required nor appropriate for the exploratory and strategic aims of this project. GitHub is used for version control and documentation, supporting reproducibility and alignment with professional data science practice.
 
 ---
 
 ## Data Engineering
-The data engineering phase focuses on transforming fragmented public APP fraud statistics into a consistent and analysis‑ready dataset. Source data is published annually by multiple bodies, with variations in schema definitions, typology classifications and reporting granularity across years. An extract‑transform‑load (ETL) process is therefore applied to ensure temporal consistency and analytical validity.
 
-During extraction, raw datasets are imported into Python and standardised to a common schema. Transformation steps include harmonising scam typology names, resolving category changes across reporting periods, and explicitly flagging typologies introduced part‑way through the time series (for example, crypto‑related scams). Where harmonisation is not possible, structural breaks are documented rather than imputed, preserving analytical integrity.
+The data engineering phase focuses on transforming fragmented public APP fraud statistics into a consistent and analysis‑ready dataset. Source data is published annually by multiple organisations, with variation in schema design, typology classification and reporting granularity. An extract‑transform‑load (ETL) approach is therefore applied to ensure temporal consistency and analytical validity.
 
-Feature engineering plays a central role in enabling meaningful analysis. Derived features include average loss per case, proportion of total losses attributable to each scam type, year‑on‑year growth rates, and categorical indicators of high‑severity typologies. Temporal features are added to support trend analysis and comparative evaluation across periods.
+During extraction, raw datasets are imported into Python and standardised to a common schema. Transformation steps include harmonising scam typology names, resolving category changes across reporting periods and explicitly flagging typologies introduced part‑way through the time series. Where harmonisation is not possible, structural breaks are documented rather than imputed to preserve analytical integrity and avoid misleading trend analysis.
 
-Data quality checks are embedded throughout the process, including validation of totals against published control figures, assessment of missing values, detection of duplicated records and review of extreme values. Any anomalies are documented within the analysis notebooks to ensure transparency.
+Feature engineering is used to support the project’s core analytical questions. Derived features include average loss per case, typology‑level contribution to total losses, year‑on‑year growth rates and categorical indicators of high‑severity scam types. Temporal fields are added to support trend identification and comparison across periods.
 
-Although the dataset is aggregated and does not require train‑test splitting or scaling, the engineering decisions are explicitly linked to downstream analytical objectives. This ensures that the data preparation stage directly supports robust analysis, visualisation and interpretation, consistent with established data engineering principles.
+Data quality checks are embedded throughout the process, including validation of totals against published control figures, checks for missing values and review of extreme values. Any anomalies are documented within the analysis notebooks to maintain transparency. As the dataset is fully aggregated and population‑level, standard practices such as train‑test splits, scaling or normalisation are neither methodologically valid nor analytically meaningful in this context. Engineering decisions are therefore explicitly aligned to downstream exploratory and comparative analysis rather than predictive modelling.
 
 ---
 
 ## Data Visualisation & Dashboards
-Data visualisation is used as the primary mechanism for translating analytical findings into business‑relevant insights. The project employs trend charts to illustrate changes in total APP fraud losses and case volumes over time, highlighting divergence between volume growth and financial impact. Stacked bar and area charts are used to show how the composition of fraud losses has shifted across scam typologies, enabling rapid identification of emerging risks.
 
-Comparative visuals, such as bar charts of average loss per case by typology, support prioritisation discussions by illustrating severity rather than frequency alone. Where available, geographic visualisation (for example, regional heatmaps) is proposed to support targeted intervention strategies.
+Data visualisation is the primary mechanism for translating analytical findings into business‑relevant insights. Trend charts illustrate changes in total APP fraud losses and case volumes over time, highlighting divergence between incident frequency and financial impact. This allows stakeholders to observe that rising harm is driven by severity rather than volume alone.
 
-Dashboard designs follow core data visualisation principles, including minimal cognitive load, consistent colour usage and clear annotation. Visuals are explicitly designed for a non‑technical audience, ensuring alignment between analytical outputs and decision‑making needs.
+Stacked bar and area charts show how the composition of fraud losses has shifted across scam typologies, enabling rapid identification of high‑impact categories. Comparative visuals, such as average loss per case by typology, reinforce prioritisation discussions by focusing attention on financial harm rather than reported incidents.
+
+Visuals are designed not as descriptive outputs but as decision‑support artefacts, enabling stakeholders to distinguish high‑volume scams from high‑impact scams at a glance. Designs prioritise accessibility for non‑technical audiences, using consistent colour, clear annotation and minimal cognitive load to support interpretation. Together, the visual and written elements form a coherent analytical narrative that links trends, drivers and implications for decision‑making.
 
 ---
 
-## Data Analytics
-The analytical approach begins with descriptive and exploratory analysis to establish baseline patterns in APP fraud volumes, losses and typology distribution. The primary hypothesis is that APP fraud risk is increasingly concentrated in fewer, higher‑value scams rather than driven solely by growth in case volumes. This is tested through comparative analysis of average loss per case and typology‑level loss shares across time.
+## Data Analytics, Ethics & Governance
 
-Trend analysis is used to identify scam categories exhibiting sustained growth or volatility. Where appropriate, unsupervised learning techniques such as clustering are explored to group scam typologies based on severity, growth and loss concentration. Model selection is justified based on data structure and interpretability, with clear explanation of limitations.
+The analytical approach begins with descriptive and exploratory analysis to establish baseline patterns in APP fraud volumes, losses and typology distribution, consistent with the principles of exploratory data analysis (Tukey, 1977). The primary hypothesis is that APP fraud harm is increasingly concentrated within fewer, higher‑value scam types rather than being driven solely by case growth.
 
-Given the aggregated nature of the dataset, the analysis explicitly avoids claims of individual‑level prediction or causality. Instead, outputs are positioned as strategic insights suitable for policy design, prioritisation and control optimisation. Evaluation focuses on interpretability and business relevance rather than predictive accuracy metrics.
+Comparative analysis of average loss per case and typology‑level loss shares supports this hypothesis, showing that certain scams generate disproportionate financial harm. Trend analysis is used to identify scam categories exhibiting sustained growth or volatility, enabling early‑warning insight. Where appropriate, unsupervised techniques such as clustering are explored to group scam types based on shared characteristics of severity and growth.
 
-Ethical considerations are central to the project. The data is fully anonymised and publicly released, eliminating privacy risks associated with personal data. However, aggregation introduces the risk of ecological fallacy, which is acknowledged in both analysis and conclusions. Bias arising from under‑reporting of fraud is also discussed, alongside the implications this has for interpreting trends.
+Exploratory and comparative approaches are particularly suitable for fraud analysis, as losses are typically skewed and dominated by extreme values. Effective fraud analytics therefore prioritise interpretability and robustness over predictive accuracy, particularly where outputs inform strategic rather than operational decisions (Bolton and Hand, 2002). While predictive modelling could be applied where individual‑level data is available, an exploratory analytical approach is more appropriate here given the aggregated structure of the data and the strategic nature of the research questions.
 
-Regulatory and legal considerations are addressed by aligning insights with FCA guidance and reimbursement obligations, ensuring that analytical recommendations are framed within a compliant and responsible governance context.
+Ethical considerations are central to the project. The data is publicly released and anonymised, minimising privacy risk. However, aggregation introduces risk of ecological fallacy and masking of sub‑population effects, which is acknowledged. Bias arising from under‑reporting of fraud is also considered when interpreting trends. Regulatory framing aligns insights with FCA reimbursement obligations and established principles for responsible analytics, emphasising transparency, proportionality and consumer protection (UK Finance, 2020).
 
 ---
 
 ## Recommendations
-The analysis indicates that APP fraud prevention strategies should move beyond volume‑based prioritisation and place greater emphasis on loss severity. Scam typologies with lower case volumes but significantly higher average losses, such as investment and impersonation scams, represent a disproportionate share of financial harm.
 
-The findings also suggest a need for typology‑specific customer interventions. Tailoring messaging, friction and educational prompts to the behavioural characteristics of high‑severity scams could improve customer comprehension and reduce susceptibility at key decision points within the payment journey.
+Based on the findings, APP fraud prevention strategies should move beyond volume‑based prioritisation and place greater emphasis on loss severity. Scam typologies with lower reported volumes but high average losses represent a disproportionate share of financial harm. Aligning controls, monitoring thresholds and reimbursement strategies with severity‑based indicators would enable more effective use of fraud‑prevention investment and reduce downstream reimbursement costs.
 
-In addition, the use of growth‑rate metrics as early‑trend indicators is recommended. Monitoring sustained increases in loss severity or typology‑level growth could allow banks and regulators to introduce preventative controls earlier, rather than reacting once losses have materialised. Future iterations of this work should seek to integrate public APP fraud data with internal transaction‑level datasets to enable more granular modelling and improved impact measurement.
+The analysis also supports development of typology‑specific customer interventions. Generic fraud warnings are unlikely to be equally effective across all scam types. Tailoring messaging and friction to the behavioural characteristics of high‑severity scams, such as impersonation or investment fraud, could improve customer comprehension and reduce susceptibility at critical decision points.
+
+From a data science perspective, severity‑weighted growth metrics should be adopted as early‑warning indicators. Monitoring increases in average loss per case or typology‑level loss concentration would allow institutions to act proactively rather than reacting once total losses escalate. This is particularly relevant in a regulatory environment where earlier intervention reduces both consumer harm and reimbursement exposure.
+
+Future iterations of this work should integrate aggregated external fraud statistics with internal transaction‑level and behavioural data. While the current project is necessarily strategic, combining these data sources would enable more granular modelling, clearer evaluation of intervention effectiveness and stronger measurement of business value.
 
 ---
 
 ## References
+
 - Action Fraud (2023). *Fraud and cyber crime statistics*  
-- UK Finance (2024). *Fraud The Facts*  
-- Financial Conduct Authority (2023). *APP reimbursement guidance*  
+- Bolton, R.J. and Hand, D.J. (2002). *Statistical fraud detection: A review*  
+- Braithwaite, J. (2024). *Authorised push payment fraud and regulatory response*  
+- Few, S. (2012). *Show Me the Numbers*  
 - Provost, F. and Fawcett, T. (2013). *Data Science for Business*  
-- Few, S. (2012). *Show Me the Numbers*
-``
+- Tukey, J.W. (1977). *Exploratory Data Analysis*  
+- UK Finance (2020). *Ethical principles for advanced analytics and AI*
+
+---
